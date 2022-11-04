@@ -1,0 +1,30 @@
+enable_modelarts: 0
+
+# Url for modelarts
+data_url: "s3://bucket-d/datasets/imagenet"
+train_url: "s3://bucket-d/train"
+checkpoint_url: 
+output_path: "/cache/train"
+data_path: "/cache/datasets/imagenet"
+
+# eval datasets
+interpolation: 'BILINEAR'
+eval_path: '/cache/datasets/imagenet/val'
+eval_image_size: 224
+eval_batch_size: 128
+eval_interval: 1
+eval_offset: -1
+eval_num_workers: 12
+
+# load model
+pretrained: './checkpoint/soft_tiny.ckpt'
+
+# network
+backbone: 'soft_tiny'
+class_num: 1000
+soft_config_path: 'models.softmax_free_vision_transformer.SOFTConfig'
+
+open_profiler: 0
+
+amp_level: "O3"
+device_target: 'GPU'
